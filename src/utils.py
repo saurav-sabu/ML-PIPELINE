@@ -28,6 +28,19 @@ def save_object(file_path,obj):
         # Raise a custom exception with logging and error information
         raise CustomException(e,sys)
     
+
+def load_object(file_path):
+
+    try:
+        # Open the file at the specified file path in binary read mode
+        with open(file_path,"rb") as f:
+            # Load and return the Python object stored in the file using pickle
+            return pickle.load(f)
+    except Exception as e:
+        # If an exception occurs during file reading or unpickling, raise a CustomException with the error information
+        raise CustomException(e,sys)
+
+
 def evaluate_model(X_train,y_train,X_test,y_test,models,params):
     try:
         # Create an empty dictionary to store model evaluation results
@@ -68,4 +81,7 @@ def evaluate_model(X_train,y_train,X_test,y_test,models,params):
         logging.info("Error occurred in utils file")
         # Handle any exceptions that may occur during model evaluation
         raise CustomException(e,sys)
+    
+
+
 
