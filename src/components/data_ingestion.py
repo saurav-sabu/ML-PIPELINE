@@ -4,6 +4,7 @@ import sys
 from src.logger import logging
 from src.exception import CustomException
 from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainer
 
 from dataclasses import dataclass
 
@@ -69,3 +70,7 @@ if __name__ == "__main__":
     # Create an instance of the DataTransformation class and initiate data transformation
     data_transformation = DataTransformation()
     train_arr,test_arr,_ = data_transformation.initiate_data_transformation(train_data_path, test_data_path) 
+
+    # Create an instance of the ModelTrainer class and initiate Model Training
+    modeltrainer = ModelTrainer()
+    modeltrainer.initiate_model_trainer(train_arr,test_arr)
